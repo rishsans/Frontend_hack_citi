@@ -1,0 +1,48 @@
+/* DisplayFriendList.css */
+
+.container {
+    text-align: center;
+    margin: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Center align horizontally */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping of buttons if they exceed width */
+}
+
+.link-button, button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.link-button:hover, button:hover {
+    background-color: #0056b3;
+}
+
+.link-button:focus, button:focus {
+    outline: none;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Adjusting button margin to create space between buttons */
+.link-button + .link-button, button + button {
+    margin-left: 10px;
+}
