@@ -31,7 +31,6 @@ const Login = () => {
             sessionStorage.setItem('userid',data['user_id'])
             navigate('/displayfriendlist');
         })
-        
         .catch(error=>{console.error(error);})
 
     }

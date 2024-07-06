@@ -288,7 +288,7 @@ const FriendCirclePage = () => {
 
         // Create the payload for the API request
         const payload = {
-            admin_user_id: form.circleId,
+            admin_user_id: sessionStorage.getItem('userid'),
             circle_name: form.circleName,
             circle_category: form.category,
         };
@@ -321,17 +321,7 @@ const FriendCirclePage = () => {
             <div className="friend-circle-container">
                 <h2>Create Friend Circle</h2>
                 <form onSubmit={handleSubmit} className="friend-circle-form">
-                    <div className="form-group">
-                        <label htmlFor="circleId">ID:</label>
-                        <input
-                            type="text"
-                            id="circleId"
-                            name="circleId"
-                            value={form.circleId}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </div>
+                    
                     <div className="form-group">
                         <label htmlFor="circleName">Friend Circle Name:</label>
                         <input

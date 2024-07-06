@@ -60,10 +60,9 @@ const DisplayFriendList = () => {
         })  // Parse the JSON in the response
         .then(data => {
             setFriendCricleData(data)
-            
-            
-        
         })
+        .catch(error=>{console.error(error);})
+
       
     }, []);
   
