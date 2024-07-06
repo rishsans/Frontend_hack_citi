@@ -26,10 +26,39 @@ const RegistrationForm = () => {
         console.log('Form submitted:', form);
         // Add form submission logic here (e.g., send data to backend)
 
-
+        fetch('https://neueda-hackathon-project.onrender.com/user/create',{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "first_name": form.firstName,
+                "last_name": form.lastName,
+                "email": form.email,
+                "upi_id": form.UpiId,
+                "password": form.password
+              })
+        })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })  // Parse the JSON in the response
+        .then(data => {
+            console.log(data);
+            if(data===true){
+                alert("Created sucessfully")
+                navigate('/displayfriendlist'); // Navigate to create-friend-circle page
+            }
+            else{
+                alert("Error with data")
+            }
+            
         
+        })
+
+
         // Navigate to create-friend-circle page after successful registration
-        navigate('/friendcirclepage');
+        
     };
 
     return (
@@ -42,7 +71,7 @@ const RegistrationForm = () => {
                         <label>UPI Id:</label>
                         <input
                             type="text"
-                            name="userId"
+                            name="UpiId"
                             value={form.UpiId}
                             onChange={handleChange}
                             placeholder="Enter UPI Id"
