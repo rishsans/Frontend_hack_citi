@@ -12,7 +12,6 @@ const AddExpenseForm = () => {
         unequally: false,
         unequallyAmount: '',
         unequallyAmounts: [], // Array to store name and amount objects
-        paymentDate: '',
     });
 
     const handleChange = (e) => {
@@ -50,10 +49,48 @@ const AddExpenseForm = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', form);
-        // Add form submission logic here
+        const contributions = form.unequallyAmounts.reduce((acc, item) => {
+            acc[item.name] = Number(item.amount);
+            return acc;
+        }, {});
+
+        // Get selectedfc from sessionStorage
+        const group_id = sessionStorage.getItem('selectedfc');
+        console.log(group_id);
+        const payload = {
+            description: form.description,
+            category: form.category,
+            price: Number(form.price),
+            user_id_of_payer: form.paidBy, // Assuming this is the user ID
+            group_id: group_id ? Number(group_id) : 0, // Use selectedfc or default to 0 if not available
+            contributions: contributions
+        };
+
+        console.log('Submitting payload:', payload);
+
+        try {
+            const response = await fetch('https://neueda-hackathon-project.onrender.com/transaction/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            console.log('Response status:', response.status);
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error response data:', errorData);
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Form submitted successfully:', data);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
 
     return (
@@ -160,16 +197,7 @@ const AddExpenseForm = () => {
                             </ul>
                         </div>
                     )}
-                    <div className="form-group">
-                        <label>Payment date:</label>
-                        <input
-                            type="date"
-                            name="paymentDate"
-                            value={form.paymentDate}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+
                     <button type="submit">Submit</button>
                 </form>
             </div>
