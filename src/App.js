@@ -46,6 +46,8 @@ import Error from './Component/PageNotFound';
 import FriendCircleName from './Component/FriendCircleName';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FriendCircleProvider } from './Component/FriendCircleContext';
+import MemberList from './Component/MemberList';
+
 
 function App() {
   return (
@@ -58,6 +60,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/friendcirclepage" element={<FriendCirclePage />} />
             <Route path="/register" element={<RegistrationForm />} />
+            <Route path="/memberlist" element={<MemberList />} />
             <Route path="/addmember" element={<AddMemberForm />} />
             <Route path="/addexpense" element={<AddExpenseForm />} />
             <Route path="/displayfriendlist" element={<DisplayFriendList />} />
