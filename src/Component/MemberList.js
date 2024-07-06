@@ -5,16 +5,18 @@ const MemberList = () => {
 
     useEffect(() => {
         const id = sessionStorage.getItem('selectedfc');
-        fetch("https://neueda-hackathon-project.onrender.com/user/list-members-of-circle/+ sessionStorage.getItem('selectedfc')", {
-            method: 'GET',
-        })
-        .then(response => response.json())
-        .then(data => {
-            setMembers(data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        if (id) {
+            fetch(`https://neueda-hackathon-project.onrender.com/user/list-members-of-circle/${id}`, {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                setMembers(data);
+            })
+            .catch(error => {
+                console.error('Error fetching members:', error);
+            });
+        }
     }, []);
 
     return (
@@ -32,4 +34,3 @@ const MemberList = () => {
 };
 
 export default MemberList;
-//MemList.js
