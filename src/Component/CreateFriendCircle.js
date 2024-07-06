@@ -397,5 +397,3 @@ const FriendCirclePage = () => {
 };
 
 export default FriendCirclePage;
-
-
