@@ -100,7 +100,6 @@ const DisplayFriendList = () => {
         .then(response => response.json())
         .then(data => {
             setMessage('You have successfully left the group.');
-            // Update the Friend Circle list if needed
             setFriendCricleData(FriendCricleData.filter(circle => circle.friend_circle_id !== parseInt(groupId)));
             setSelectedOption('');
         })
@@ -111,7 +110,27 @@ const DisplayFriendList = () => {
     };
 
     const handleDeleteClick = () => {
-        console.log('Delete button clicked');
+        const groupId = sessionStorage.getItem('selectedfc');
+
+        fetch('https://neueda-hackathon-project.onrender.com/friend_circle/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                groupID: groupId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            setMessage('Group has been deleted.');
+            setFriendCricleData(FriendCricleData.filter(circle => circle.friend_circle_id !== parseInt(groupId)));
+            setSelectedOption('');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            setMessage('An error occurred while trying to delete the group.');
+        });
     };
 
     return (
