@@ -20,11 +20,39 @@ const Login = () => {
         console.log('Email:', email);
         console.log('Password:', password);
 
+
+
+
+        fetch('https://neueda-hackathon-project.onrender.com/user/verify',{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"email": email,"password":password})
+        })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })  // Parse the JSON in the response
+        .then(data => {
+            console.log(data);
+            if(data===true){
+                navigate('/displayfriendlist'); // Navigate to create-friend-circle page
+            }
+            else{
+                alert("incorrect credintionals")
+            }
+            
+        
+        })
+        
+        .catch(error=>{console.error(error);})
+
         // Replace with your actual login logic
         // Example of navigating to create-friend-circle page after successful login
-        setTimeout(() => {
-            navigate('/displayfriendlist'); // Navigate to create-friend-circle page
-        }, 1000);
+        // setTimeout(() => {
+        //     navigate('/displayfriendlist'); // Navigate to create-friend-circle page
+        // }, 1000);
     };
 
     return (
