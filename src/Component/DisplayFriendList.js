@@ -36,13 +36,43 @@
 
 
 // 
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import { useNavigate } from 'react-router-dom';
 import './DisplayFriendList.css';
 
 const DisplayFriendList = () => {
+
+    const [FriendCricleData, setFriendCricleData] = useState([]);
+    const [selectedOption, setSelectedOption] = useState('');
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+
+
+        fetch('https://neueda-hackathon-project.onrender.com/friend_circle/list-friend-circle-of-user/'+sessionStorage.getItem('userid'),{
+            method:'GET',
+        })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })  // Parse the JSON in the response
+        .then(data => {
+            setFriendCricleData(data)
+            
+            
+        
+        })
+      
+    }, []);
+  
+    const handleChange = (event) => {
+      setSelectedOption(event.target.value);
+      sessionStorage.setItem("selectedfc",selectedOption)
+    };
+
+
 
     const handleLeaveClick = () => {
         console.log('Leave button clicked');
@@ -58,11 +88,12 @@ const DisplayFriendList = () => {
             <div>
                 <h2>Display List</h2>
                 <div className="buttons-container">
-                <select>
-                        <option>bvdk</option>
-                        <option>cknjs</option>
-                        <option>nvd </option>
-
+                    <select value={selectedOption} onChange={handleChange}>
+                        <option value="" disabled>Select FriendCricle</option>
+                        {FriendCricleData.map(option => (
+                            <option key={option.friend_circle_id} value={option.friend_circle_id}>
+            {option.circle_name}</option>
+                        ))}
                     </select>
                     <Link to="/friendcirclename" className="link-button">Friend Circle Name</Link>
                     <Link to="/addmember" className="link-button">Add Friend</Link>

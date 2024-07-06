@@ -15,6 +15,27 @@ const Login = () => {
         setPassword(e.target.value);
     };
 
+
+    function setuserid() {
+
+
+        fetch('https://neueda-hackathon-project.onrender.com/user/email/'+sessionStorage.getItem('Email'),{
+            method:'GET',
+        })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        })  // Parse the JSON in the response
+        .then(data => {
+            console.log(data)
+            sessionStorage.setItem('userid',data['user_id'])
+            navigate('/displayfriendlist');
+        })
+        
+        .catch(error=>{console.error(error);})
+
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Email:', email);
@@ -37,7 +58,9 @@ const Login = () => {
         .then(data => {
             console.log(data);
             if(data===true){
-                navigate('/displayfriendlist'); // Navigate to create-friend-circle page
+                sessionStorage.setItem('Email',email)
+                setuserid()
+                 // Navigate to create-friend-circle page
             }
             else{
                 alert("incorrect credintionals")
