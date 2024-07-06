@@ -10,8 +10,30 @@ const AddMemberForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
-        console.log('Form submitted:', { userId, name, email, upiId });
+
+        const adminUserId = sessionStorage.getItem('userid');
+        const friendCircleId = sessionStorage.getItem('selectedfc');
+        
+        fetch('https://neueda-hackathon-project.onrender.com/friend_circle/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                admin_user_id: adminUserId,
+                friend_circle_id: friendCircleId,
+                new_user_id: userId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Form submitted:', data);
+            // Handle the response data as needed
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
         // Reset form state if needed
         setUserId('');
         setName('');
@@ -22,7 +44,6 @@ const AddMemberForm = () => {
     return (
         <div>
             <Header />
-
             <div className="add-member-form">
                 <h2>Add Member</h2>
                 <form onSubmit={handleSubmit}>
