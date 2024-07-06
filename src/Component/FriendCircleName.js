@@ -11,7 +11,7 @@ const FriendCircleName = () => {
 
     return (
         <div>
-            <Header />
+            <Header/>
             <div className="friend-circle-details">
                 <h2>Friend Circle Details</h2>
                 <p>ID: {friendCircle.circleId}</p>
