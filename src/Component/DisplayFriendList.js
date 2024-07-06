@@ -58,6 +58,12 @@ const DisplayFriendList = () => {
             <div>
                 <h2>Display List</h2>
                 <div className="buttons-container">
+                <select>
+                        <option>bvdk</option>
+                        <option>cknjs</option>
+                        <option>nvd </option>
+
+                    </select>
                     <Link to="/friendcirclename" className="link-button">Friend Circle Name</Link>
                     <Link to="/addmember" className="link-button">Add Friend</Link>
                     <Link to="/addexpense" className="link-button">Add Expense</Link>

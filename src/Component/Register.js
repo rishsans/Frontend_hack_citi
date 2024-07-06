@@ -4,7 +4,7 @@ import './Register.css';
 import Header1 from './Header1';
 const RegistrationForm = () => {
     const [form, setForm] = useState({
-        userId: '',
+        UpiId: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -26,6 +26,8 @@ const RegistrationForm = () => {
         console.log('Form submitted:', form);
         // Add form submission logic here (e.g., send data to backend)
 
+
+        
         // Navigate to create-friend-circle page after successful registration
         navigate('/friendcirclepage');
     };
@@ -37,13 +39,13 @@ const RegistrationForm = () => {
                 <form onSubmit={handleSubmit} className="registration-form">
                     <h2>Create Account</h2>
                     <div className="form-group">
-                        <label>User Id:</label>
+                        <label>UPI Id:</label>
                         <input
                             type="text"
                             name="userId"
-                            value={form.userId}
+                            value={form.UpiId}
                             onChange={handleChange}
-                            placeholder="Enter User Id"
+                            placeholder="Enter UPI Id"
                             required
                         />
                     </div>
