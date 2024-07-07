@@ -8,7 +8,7 @@ const Header = () => {
         <div className="navbar">
             <h1 className="navbar-title">Title</h1>
             <div className="navbar-links">
-            
+
                 <Link to="/home" className="navbar-link">
                     <button className="navbar-button">Home</button>
                 </Link>
@@ -18,10 +18,12 @@ const Header = () => {
                 <Link to="/displayfriendlist" className="navbar-link">
                     <button className="navbar-button">Display Friend Circle List</button>
                 </Link>
-
+                <Link to="/friendcirclename" className="navbar-link"><button className="navbar-button">Friend Circle Name</button></Link>
+                <p></p>
             </div>
         </div>
     );
 };
 
 export default Header;
+//header.js
