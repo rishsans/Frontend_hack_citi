@@ -82,23 +82,31 @@ const DisplayFriendList = () => {
         setSelectedOption(event.target.value);
         sessionStorage.setItem("selectedfc", event.target.value);
     };
-
+    
     const handleLeaveClick = () => {
         const userId = sessionStorage.getItem('userid');
         const groupId = sessionStorage.getItem('selectedfc');
-
-        fetch('https://neueda-hackathon-project.onrender.com/friend_circle/leave', {
+    
+        if (!userId || !groupId) {
+            console.error('User ID or Group ID is missing');
+            setMessage('User ID or Group ID is missing.');
+            return;
+        }
+    
+        fetch(`https://neueda-hackathon-project.onrender.com/friend_circle/leave?userID=${userId}&groupID=${groupId}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userID: userId,
-                groupID: groupId
-            })
+                'accept': '*/*'
+            }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log(data);
             setMessage('You have successfully left the group.');
             // Update the Friend Circle list if needed
             setFriendCricleData(FriendCricleData.filter(circle => circle.friend_circle_id !== parseInt(groupId)));
@@ -109,6 +117,7 @@ const DisplayFriendList = () => {
             setMessage('An error occurred while trying to leave the group.');
         });
     };
+    
 
     const handleDeleteClick = () => {
         console.log('Delete button clicked');
