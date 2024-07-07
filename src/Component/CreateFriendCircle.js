@@ -309,6 +309,7 @@ const FriendCirclePage = () => {
 
             const data = await response.json();
             console.log('Friend circle created successfully:', data);
+            alert("Friend circle created successfully")
             navigate('/displayfriendlist');
         } catch (error) {
             console.error('Error creating friend circle:', error);
