@@ -8,7 +8,8 @@ const Home = () => {
         <div>
             <Header1 />
             <div className="home-container">
-                <h1 className="app-name">Expense Manager</h1>
+                <h1 className="app-name">$plit $mart</h1>
+                {/* <h2 className="app-name">Equity in every expense</h2> */}
                 <p className="app-description">
                     Simplify Splitting Expenses with Friends
                 </p>

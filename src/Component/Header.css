@@ -1,4 +1,7 @@
 /* Header.css */
+
+
+
 .navbar {
     display: flex;
     align-items: center;
@@ -15,6 +18,15 @@
     color: white;
     /* Change text color to white */
     font-size: 28px;
+    /* Increase font size */
+    margin-left: 20px;
+    /* Add left margin for positioning */
+}
+
+.navbar-para {
+    color: white;
+    /* Change text color to white */
+    font-size: 20px;
     /* Increase font size */
     margin-left: 20px;
     /* Add left margin for positioning */

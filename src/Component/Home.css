@@ -4,28 +4,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the start of the container */
     height: 100vh;
     background-color: #f0f0f0;
+    background-image: url('/workspaces/Frontend_hack_citi/src/bkg.jpg'); /* Add your background image here */
+    background-size: cover; /* Ensure the image covers the whole background */
+    background-position: center top; /* Center the image horizontally and shift it to the top vertically */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
     color: #333;
-    padding: 20px;
+    padding: 40px 20px 20px; /* Add padding at the top to push content upwards */
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'League Spartan', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .app-name {
-    font-size: 32px;
+    font-size: 52px;
     font-weight: bold;
-    color: #007BFF;
+    color: blue;
     margin-bottom: 20px;
 }
 
 .app-description {
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.features {
+/* .features {
     margin-top: 20px;
     width: 80%;
     max-width: 600px;
@@ -33,25 +38,67 @@
 }
 
 .features h2 {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #007BFF;
+    color: blue;
 }
 
 .features ul {
     list-style-type: disc;
     margin-left: 20px;
-    font-size: 16px;
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.features ul li {
+    margin-bottom: 10px; /* Add space after each list item 
+} */
+
+.features-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.features {
+    width: 80%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.features h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: blue;
+}
+
+.features ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.features ul li {
+    margin-bottom: 15px; /* Add space after each list item */
+}
+
 
 .action-buttons {
     margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .button-container {
     display: flex;
     gap: 20px;
+    justify-content: center; /* Center align horizontally */
+    margin-top: 20px; /* Adjust as needed */
+    
 }
 
 .button {
