@@ -47,7 +47,7 @@ const RegistrationForm = () => {
             console.log(data);
             if(data===true){
                 alert("Created sucessfully")
-                navigate('/displayfriendlist'); // Navigate to create-friend-circle page
+                navigate('/login'); // Navigate to create-friend-circle page
             }
             else{
                 alert("Error with data")
