@@ -140,7 +140,7 @@ const DisplayFriendList = () => {
                 <h2>Display List</h2>
                 {message && <div className="message">{message}</div>}
                 <div className="buttons-container">
-                    <select value={selectedOption} onChange={handleChange}>
+                    <select className="link-button" value={selectedOption} onChange={handleChange}>
                         <option value="" disabled>Select FriendCricle</option>
                         {FriendCricleData.map(option => (
                             <option key={option.friend_circle_id} value={option.friend_circle_id}>

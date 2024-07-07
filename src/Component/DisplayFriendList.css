@@ -2,31 +2,40 @@
 
 .container {
     text-align: center;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 .header {
     margin-bottom: 20px;
 }
 
+/* .buttons-container {
+    display: flex; 
+    justify-content: center; /* Center align horizontally 
+    align-items: center;
+    flex-wrap: wrap; /*Allow wrapping of buttons if they exceed width 
+} */
+
 .buttons-container {
     display: flex;
-    justify-content: center; /* Center align horizontally */
-    align-items: center;
-    flex-wrap: wrap; /* Allow wrapping of buttons if they exceed width */
+    flex-direction: column; /* Align buttons vertically */
+    justify-content: center; /* Center align vertically */
+    align-items: center; /* Center align horizontally */
+    flex-wrap: wrap; /* Allow wrapping if needed */
 }
 
 .link-button, button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 40px;
     margin: 10px;
     cursor: pointer;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin-bottom: 20px;
 }
 
 .link-button:hover, button:hover {
