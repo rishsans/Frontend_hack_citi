@@ -121,10 +121,11 @@ const DisplayFriendList = () => {
     const handleDeleteClick = () => {
         const groupId = sessionStorage.getItem('selectedfc');
 
-        fetch('https://neueda-hackathon-project.onrender.com/friend_circle/delete', {
+        fetch('https://neueda-hackathon-project.onrender.com/friend_circle/delete?groupID='+groupId, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'accept': '*/*'
             },
             body: JSON.stringify({
                 groupID: groupId
@@ -135,6 +136,7 @@ const DisplayFriendList = () => {
             setMessage('Group has been deleted.');
             setFriendCricleData(FriendCricleData.filter(circle => circle.friend_circle_id !== parseInt(groupId)));
             setSelectedOption('');
+            console.log(data)
         })
         .catch(error => {
             console.error('Error:', error);
