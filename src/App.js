@@ -47,6 +47,8 @@ import FriendCircleName from './Component/FriendCircleName';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FriendCircleProvider } from './Component/FriendCircleContext';
 import MemberList from './Component/MemberList';
+import SettlementList from './Component/SettlementList';
+import TransactionList from './Component/TransactionList';
 
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
             <Route path="/addexpense" element={<AddExpenseForm />} />
             <Route path="/displayfriendlist" element={<DisplayFriendList />} />
             <Route path="/friendcirclename" element={<FriendCircleName />} />
+            <Route path="/settlementlist" element={<SettlementList />} />
+            <Route path="/transactionlist" element={<TransactionList />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
