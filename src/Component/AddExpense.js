@@ -2,12 +2,16 @@ import React, {
     useState,
     useEffect
 } from 'react';
+import {
+    useNavigate
+} from 'react-router-dom';
 import './AddExpense.css'; // Import your CSS file here
 import Header from './Header';
 
 
 const AddExpenseForm = (props) => {
         const circleId = sessionStorage.getItem('selectedfc');
+        const navigate = useNavigate();
         // Access the passed data
         const [form, setForm] = useState({
             description: '',
@@ -161,6 +165,7 @@ const AddExpenseForm = (props) => {
                 }
                 const data = await response.json();
                 console.log('Form submitted successfully:', data);
+                navigate('/home');
             } catch (error) {
                 console.error('Error submitting form:', error);
             }
@@ -254,7 +259,7 @@ const AddExpenseForm = (props) => {
                     </div>
                     { (form.splitOption === 'unequally') && ( 
                         < div className = "form-group">
-                            <h3> Unequally Split Contributions </h3>
+                            <p>< b > Unequally Split Contributions </b></p >
                             {   users.map((user) => ( <
                                     div key = {
                                         user["user_id"]
@@ -281,8 +286,7 @@ const AddExpenseForm = (props) => {
                     )}
                      {
                         form.splitOption === 'equally' && 
-                        (<div className="form-group">
-                            <h3>Equally Split Contributions</h3>
+                        ( < div className = "form-group" > < p > < b >equally Split Contributions </b></p >
                                 {users.map((user) => (
                                     <div key={user.user_id}>
                                         <label>{user.first_name} {user.last_name}:</label>

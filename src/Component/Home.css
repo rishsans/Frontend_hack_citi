@@ -7,7 +7,8 @@
     justify-content: flex-start; /* Align items to the start of the container */
     height: 100vh;
     background-color: #f0f0f0;
-    background-image: url('/workspaces/Frontend_hack_citi/src/bkg.jpg'); /* Add your background image here */
+    background-image: url('../bkg.jpg');
+    /* Add your background image here */
     background-size: cover; /* Ensure the image covers the whole background */
     background-position: center top; /* Center the image horizontally and shift it to the top vertically */
     background-repeat: no-repeat; /* Prevent the image from repeating */

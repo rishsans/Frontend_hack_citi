@@ -6,8 +6,8 @@ const SettlementList = () => {
     useEffect(() => {
         const groupId = sessionStorage.getItem('selectedfc');
         const userId = sessionStorage.getItem('userid');
-        if (groupId && userId) {
-            fetch(`http://localhost:8080/transaction/settlement/list/${groupId}/${userId}`, {
+        if (groupId && userId) { // http://localhost:8080
+            fetch(`https://neueda-hackathon-project.onrender.com/transaction/settlement/list/${groupId}/${userId}`, {
                 method: 'GET',
             })
             .then(response => response.json())

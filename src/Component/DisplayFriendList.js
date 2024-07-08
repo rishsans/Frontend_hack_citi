@@ -160,11 +160,12 @@ const DisplayFriendList = () => {
                         ))}
                     </select>
                     <Link to="/addmember" className="link-button">Add Friend</Link>
-                    < Link to = {
-                        `/addexpense`
-                    }
-                    className = "link-button"> Add Expense </Link>
+                    < Link to = {`/addexpense`} className = "link-button"> Add Expense </Link>
                     <Link to="/memberlist" className="link-button">Member List</Link>
+                    < Link to = "/transactionlist"
+                    className = "link-button" > Transaction List </Link>
+                    < Link to = "/settlementlist"
+                    className = "link-button" > Settlement List </Link>
                     <Link to="#" onClick={handleLeaveClick} className="link-button">Leave</Link>
                     <Link to="#" onClick={handleDeleteClick} className="link-button">Delete</Link>
                 </div>

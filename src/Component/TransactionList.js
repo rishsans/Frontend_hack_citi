@@ -5,11 +5,15 @@ const TransactionList = () => {
 
     useEffect(() => {
         const groupId = sessionStorage.getItem('selectedfc');
-        if (groupId) {
+        console.log(groupId);
+        if (groupId) { 
             fetch(`https://neueda-hackathon-project.onrender.com/transaction/list/${groupId}`, {
                 method: 'GET',
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                return response.json();
+            })
             .then(data => {
                 setTransactions(data);
             })
